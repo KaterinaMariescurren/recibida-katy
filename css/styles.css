@@ -294,14 +294,16 @@ section, nav, footer { position: relative; z-index: 1; }
   display: flex; justify-content: center; gap: 16px; margin-bottom: 56px;
 }
 .countdown-item {
-  /* blanco al 75%, borde rosa al 20% */
   background: rgba(255,255,255,0.75);
   border: 1.5px solid rgba(229,152,155,0.20);
   border-radius: 12px;
-  padding: 22px 16px 16px; min-width: 88px;
+  padding: 22px 16px 16px;
+  width: 88px;        /* width fijo en lugar de min-width */
+  flex-shrink: 0;     /* que no se achique en pantallas chicas */
   display: flex; flex-direction: column; align-items: center; gap: 8px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.09);
 }
+
 .countdown-item span {
   font-family: 'Inter', sans-serif;
   font-size: 36px; font-weight: 700;
@@ -551,11 +553,11 @@ footer cite {
   .detalles-grid  { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
 
   .countdown      { gap: 10px; }
-  .countdown-item { min-width: 66px; padding: 16px 10px 12px; }
+  .countdown-item { width: 72px; flex-shrink: 0; padding: 16px 10px 12px; }
   .countdown-item span { font-size: 26px; }
 
   .form-card { padding: 28px 20px; }
-  .form-row  { grid-template-columns: 1fr; gap: 0; }
+  .form-row  { grid-template-columns: 1fr; gap: 14px; }
 
   #regalo      { padding: 20px 20px 60px; }
   .regalo-card { padding: 36px 24px; }
@@ -563,6 +565,6 @@ footer cite {
 }
 
 @media (max-width: 400px) {
-  .countdown-item      { min-width: 56px; }
+  .countdown-item      { width: 60px; }
   .countdown-item span { font-size: 22px; }
 }
