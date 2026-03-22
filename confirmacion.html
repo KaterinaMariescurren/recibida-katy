@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirmación – Mi Recibida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./css/styles.css"/>
+  <style>
+    /* ===== Estilos específicos de esta página ===== */
+
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+
+    main { flex: 1; padding-top: 68px; }
+
+    /* Back button */
+    .back-btn {
+      position: fixed; top: 18px; left: 20px; z-index: 201;
+      background: none; border: none; cursor: pointer;
+      color: var(--text-mid); padding: 6px; line-height: 1;
+      text-decoration: none; display: flex; align-items: center;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .back-btn:hover { color: var(--teal); transform: translateX(-3px); }
+    .back-btn svg   { stroke: currentColor; }
+
+    /* Hero grid */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      min-height: calc(100vh - 68px - 160px);
+      padding: 40px 60px 60px;
+      gap: 40px;
+    }
+
+    /* Illustration side */
+    .illus-side {
+      display: flex; flex-direction: column; align-items: flex-start;
+      opacity: 0; transform: translateX(-44px);
+      animation: fromLeft 0.9s 0.1s var(--ease) forwards;
+    }
+    @keyframes fromLeft { to { opacity: 1; transform: none; } }
+
+    .illus-caption {
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--text-mid); margin-bottom: 24px; margin-left: 6px;
+      line-height: 1.8;
+    }
+    .illus-img { width: 100%; max-width: 520px; display: block; }
+
+    /* Text side */
+    .text-side {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 16px;
+      opacity: 0; transform: translateX(44px);
+      animation: fromRight 0.9s 0.2s var(--ease) forwards;
+    }
+    @keyframes fromRight { to { opacity: 1; transform: none; } }
+
+    .conf-title {
+      font-family: 'Noto Serif', serif;
+      font-size: clamp(26px, 4vw, 52px);
+      font-weight: 700; color: var(--text); line-height: 1.15;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--teal); border-radius: 999px;
+      padding: 8px 22px; font-size: 14px; color: var(--teal);
+      opacity: 0; animation: fadeUp 0.6s 0.65s var(--ease) forwards;
+    }
+    .badge svg { stroke: var(--teal); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .msg-primary {
+      font-size: clamp(14px, 1.7vw, 16px); color: var(--text-mid);
+      line-height: 1.7; max-width: 420px;
+      opacity: 0; animation: fadeUp 0.6s 0.80s var(--ease) forwards;
+    }
+    .msg-secondary {
+      font-size: clamp(13px, 1.5vw, 15px); color: var(--text-mid);
+      line-height: 1.75; max-width: 400px;
+      opacity: 0; animation: fadeUp 0.6s 0.95s var(--ease) forwards;
+    }
+    .accent      { color: var(--pink); font-weight: 700; }
+    .accent-teal { color: var(--teal); font-weight: 700; }
+
+    /* Detail cards */
+    .cards-wrap {
+      display: flex; flex-direction: column; gap: 14px;
+      width: 100%; max-width: 480px; margin-top: 10px;
+    }
+    .detail-card {
+      background: var(--white); border-radius: 14px; padding: 22px 24px;
+      box-shadow: var(--card-shadow); text-align: left;
+      display: flex; flex-direction: column; gap: 4px;
+      opacity: 0; transform: translateY(16px);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .detail-card.visible { animation: cardIn 0.55s var(--ease) forwards; }
+    @keyframes cardIn    { to { opacity: 1; transform: none; } }
+    .detail-card:hover   { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.12); }
+
+    .card-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--teal-light);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 10px;
+    }
+    .card-icon svg { stroke: var(--teal); }
+
+    .detail-card h3 {
+      font-family: 'Noto Serif', serif;
+      font-size: clamp(18px, 2.2vw, 22px); font-weight: 700; color: var(--text);
+    }
+    .detail-card .sub { font-size: 13px; color: var(--text-light); margin-bottom: 10px; }
+    .detail-card a {
+      font-size: 13px; color: var(--teal); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      transition: color 0.2s, gap 0.25s var(--ease);
+    }
+    .detail-card a:hover { color: var(--teal-dark); gap: 9px; }
+    .detail-card a svg   { stroke: var(--teal); transition: stroke 0.2s; }
+    .detail-card a:hover svg { stroke: var(--teal-dark); }
+
+    /* ===== REGALO — full width debajo del grid ===== */
+    .regalo-section {
+      padding: 0 60px 80px;
+      opacity: 0; transform: translateY(24px);
+      animation: fadeUp 0.7s 1.3s var(--ease) forwards;
+    }
+
+    /* Override: en esta página la card ocupa todo el ancho disponible */
+    .regalo-section .regalo-card {
+      max-width: 100%;
+      border-radius: 20px;
+      padding: 52px 60px;
+      box-shadow: var(--card-shadow);
+      background: var(--white);
+      text-align: center;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .regalo-section .regalo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+    }
+
+    /* Footer override */
+    footer {
+      background: rgba(0,124,119,0.12);
+      padding: 52px 20px; text-align: center;
+    }
+    footer blockquote {
+      font-family: 'Noto Serif', serif; font-style: italic;
+      font-size: clamp(15px, 2vw, 19px); color: var(--text-mid);
+      max-width: 600px; margin: 0 auto; line-height: 1.6;
+    }
+    footer cite {
+      display: block; font-style: normal;
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 14px; color: var(--text-light); margin-top: 10px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 24px 20px 48px;
+        min-height: auto; gap: 32px;
+      }
+      .illus-side    { align-items: center; }
+      .illus-img     { max-width: 320px; margin: 0 auto; }
+      .illus-caption { text-align: center; margin-left: 0; }
+      .text-side     { align-items: center; }
+      .cards-wrap    { max-width: 100%; }
+
+      .regalo-section { padding: 0 20px 60px; }
+      .regalo-section .regalo-card { padding: 36px 24px; }
+
+      footer { padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" role="navigation">
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="index.html#detalles">Detalle</a>
+    <a href="index.html#confirmar">Confirmar</a>
+    <a href="index.html#regalo">Regalito</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html"           onclick="closeMobileMenu()">Inicio</a>
+  <a href="index.html#detalles"  onclick="closeMobileMenu()">Detalle</a>
+  <a href="index.html#confirmar" onclick="closeMobileMenu()">Confirmar</a>
+  <a href="index.html#regalo"    onclick="closeMobileMenu()">Regalito</a>
+</div>
+
+<main>
+  <!-- Grid: ilustración + texto dinámico -->
+  <section class="hero-section">
+    <div class="illus-side">
+      <img class="illus-img" src="./images/ilustracion-lograste.png" alt="Lo Lograste"/>
+    </div>
+    <div class="text-side" id="text-side"></div>
+  </section>
+
+  <!-- Regalo — se muestra solo si asiste (inyectado por JS) -->
+  <section class="regalo-section" id="regalo-section" style="display:none;">
+    <div class="regalo-card">
+      <h3 class="regalo-title">Tu presencia es lo más importante.</h3>
+      <p class="regalo-desc">
+        Pero si querés hacerme un regalito y no sabés qué elegir, estoy
+        juntando para mi próximo gran plan: <span class="pink-bold">Viajar</span>
+      </p>
+      <div class="alias-container" onclick="copyAlias()">
+        <span class="alias-texto">kmariescurrena.nx</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             width="16" height="16" class="alias-copy-icon"
+             stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </div>
+      <p class="regalo-note">Todo aporte será destinado a crear nuevos recuerdos inolvidables.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <blockquote>
+    "The future belongs to those who believe in the beauty of their dreams."
+    <cite>- Eleanor Roosevelt</cite>
+  </blockquote>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+       width="13" height="13" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+  ¡Alias copiado!
+</div>
+
+<script>
+  /* ===== Hamburger ===== */
+  var ham  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+
+  ham.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  function closeMobileMenu() {
+    menu.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  /* ===== Leer asistencia desde URL o localStorage ===== */
+  var params     = new URLSearchParams(window.location.search);
+  var asistencia = params.get('r') || localStorage.getItem('invitado_asistencia') || 'si';
+  var textSide   = document.getElementById('text-side');
+
+  /* ===== Íconos SVG reutilizables ===== */
+  var iconCalendar = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+    + '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>'
+    + '<line x1="16" y1="2" x2="16" y2="6"/>'
+    + '<line x1="8" y1="2" x2="8" y2="6"/>'
+    + '<line x1="3" y1="10" x2="21" y2="10"/>'
+    + '</svg>';
+
+  var iconPin = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+    + '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/>'
+    + '<circle cx="12" cy="10" r="3"/>'
+    + '</svg>';
+
+  var iconExternal = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+    + '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'
+    + '<polyline points="15 3 21 3 21 9"/>'
+    + '<line x1="10" y1="14" x2="21" y2="3"/>'
+    + '</svg>';
+
+  var iconCheck = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15" stroke-linecap="round" stroke-linejoin="round">'
+    + '<polyline points="20 6 9 17 4 12"/>'
+    + '</svg>';
+
+  /* ===== Agregar al calendario ===== */
+  function agregarCalendario() {
+    window.open(
+      'https://www.google.com/calendar/render?action=TEMPLATE'
+      + '&text='     + encodeURIComponent('Fiesta de Recibida de Katy')
+      + '&dates=20260411T210000/20260412T040000'
+      + '&location=' + encodeURIComponent('Salón Madagascar, 11 entre 56 y 57, La Plata')
+      + '&details='  + encodeURIComponent('¡Celebramos la recibida!'),
+      '_blank'
+    );
+  }
+
+  /* ===== Copy alias ===== */
+  function copyAlias() {
+    navigator.clipboard.writeText('kmariescurrena.nx').then(function() {
+      var t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    });
+  }
+
+  /* ===== Renderizar contenido según asistencia ===== */
+  if (asistencia === 'si') {
+
+    textSide.innerHTML =
+      '<h1 class="conf-title">¡Gracias por tu respuesta!</h1>'
+
+      + '<div class="badge">' + iconCheck + ' Confirmacion recibida</div>'
+
+      + '<p class="msg-primary">'
+      +   '¡Me alegra saber que vas a asistir a la <span class="accent">Fiesta</span>!'
+      + '</p>'
+
+      + '<p class="msg-secondary">'
+      +   '¡Estoy muy feliz de poder celebrar este logro <span class="accent-teal">juntos</span>!'
+      + '</p>'
+
+      + '<div class="cards-wrap">'
+
+      +   '<div class="detail-card" id="card-fecha">'
+      +     '<div class="card-icon">' + iconCalendar + '</div>'
+      +     '<h3>Sábado, 11 de Abril</h3>'
+      +     '<p class="sub">19:00 Horas</p>'
+      +     '<a href="#" onclick="event.preventDefault(); agregarCalendario()">'
+      +       'Add to Calendar ' + iconExternal
+      +     '</a>'
+      +   '</div>'
+
+      +   '<div class="detail-card" id="card-lugar">'
+      +     '<div class="card-icon">' + iconPin + '</div>'
+      +     '<h3>Salón Madagascar</h3>'
+      +     '<p class="sub">11 entre 56 y 57, La Plata</p>'
+      +     '<a href="https://maps.google.com/?q=Salón+Madagascar+11+entre+56+y+57+La+Plata" target="_blank" rel="noopener">'
+      +       'View on Map ' + iconExternal
+      +     '</a>'
+      +   '</div>'
+
+      + '</div>';
+
+    // Mostrar sección regalo con animación
+    var regaloSection = document.getElementById('regalo-section');
+    regaloSection.style.display = 'block';
+
+    // Animar las cards con delay escalonado
+    setTimeout(function() {
+      document.querySelectorAll('.detail-card').forEach(function(card, i) {
+        setTimeout(function() { card.classList.add('visible'); }, i * 180);
+      });
+    }, 1000);
+
+  } else {
+
+    textSide.innerHTML =
+      '<h1 class="conf-title">¡Gracias por tu respuesta!</h1>'
+
+      + '<div class="badge">' + iconCheck + ' Confirmacion recibida</div>'
+
+      + '<p class="msg-primary">'
+      +   'Se registró que no podrás asistir a la fiesta.'
+      + '</p>'
+
+      + '<p class="msg-secondary">'
+      +   'Aunque me hubiera encantado compartir este momento con vos, agradezco mucho que me hayas avisado.'
+      + '</p>';
+
+  }
+</script>
+
+</body>
+</html>
