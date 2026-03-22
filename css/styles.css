@@ -554,6 +554,7 @@ footer cite {
 
   .countdown      { gap: 10px; }
   .countdown-item { width: 72px; flex-shrink: 0; padding: 16px 10px 12px; }
+.countdown-item small { font-size: 7px; letter-spacing: 1px; }
   .countdown-item span { font-size: 26px; }
 
   .form-card { padding: 28px 20px; }
@@ -567,4 +568,5 @@ footer cite {
 @media (max-width: 400px) {
   .countdown-item      { width: 60px; }
   .countdown-item span { font-size: 22px; }
+  .countdown-item small { font-size: 6px; letter-spacing: 0.5px; }
 }
