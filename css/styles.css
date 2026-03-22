@@ -219,12 +219,12 @@ section, nav, footer { position: relative; z-index: 1; }
 .guarda-img-wrap img { width: 100%; border-radius: 10px; display: block; }
 .guarda-text h2 {
   font-family: 'Noto Serif', serif;
-  font-size: clamp(36px,5vw,62px); font-weight: 700;
+  font-size: clamp(40px,5vw,62px); font-weight: 700;
   color: var(--teal); line-height: 1.1; margin-bottom: 20px;
 }
-.guarda-text p { font-size: 15px; color: var(--text-mid); margin-bottom: 12px; line-height: 1.75; }
+.guarda-text p { font-size: 18px; color: var(--text-mid); margin-bottom: 12px; line-height: 1.75; }
 .guarda-text .highlight {
-  font-family: 'Noto Serif', serif; font-size: 19px;
+  font-family: 'Noto Serif', serif; font-size: 22px;
   color: var(--pink); font-style: italic; margin-bottom: 16px;
 }
 
