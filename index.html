@@ -1,274 +1,283 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mi Recibida – Katy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="./css/styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
+
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar" role="navigation">
-  <div class="nav-links">
-    <a href="#inicio" class="active">Inicio</a>
-    <a href="#detalles">Detalle</a>
-    <a href="#confirmar">Confirmar</a>
-    <a href="#regalo">Regalito</a>
-  </div>
-  <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- Mobile menu drawer -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#inicio"    onclick="closeMobileMenu()">Inicio</a>
-  <a href="#detalles"  onclick="closeMobileMenu()">Detalle</a>
-  <a href="#confirmar" onclick="closeMobileMenu()">Confirmar</a>
-  <a href="#regalo"    onclick="closeMobileMenu()">Regalito</a>
-</div>
-
-<!-- iframe oculto para submit sin recarga -->
-<iframe name="hidden_iframe" id="hidden_iframe"></iframe>
-
-<!-- ===== HERO ===== -->
-<section id="inicio">
-  <div class="hero-inner">
-
-    <div class="hero-logo">
-      <img src="./images/logo-mi-recibida.png" alt="Mi Graduación"/>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation">
+    <div class="nav-links">
+      <a href="#inicio" class="active">Inicio</a>
+      <a href="#detalles">Detalles</a>
+      <a href="#confirmar">Confirmar</a>
+      <a href="#regalo">Regalito</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <div class="hero-right">
-      <h1 class="hero-subtitle">Soy Ingeniera<br>en Sistemas</h1>
-      <p class="hero-desc">Quiero invitarte a celebrar conmigo este momento tan especial, después de años de dedicación y esfuerzo.</p>
-      <a href="#guarda" class="btn-ver">
-        Ver invitación
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"/>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== GUARDA EL DÍA ===== -->
-<section id="guarda">
-  <div class="guarda-inner">
-
-    <div class="guarda-img-wrap reveal-left">
-      <img src="./images/ilustracion-graduada.png" alt="Ilustración graduada"/>
-    </div>
-
-    <div class="guarda-text reveal-right">
-      <h2>Guarda el día</h2>
-      <p>Después de años de estudio, parciales eternos, trabajos grupales intensos y muchas noches sin dormir…</p>
-      <p class="highlight">Lo logré.<br>Me recibí de Ingeniera en Sistemas</p>
-      <p>Fue un camino con muchos desafíos, momentos de estrés, risas y mucha constancia.</p>
-      <p>Y si algo aprendí en todo este proceso es que los logros se celebran y se disfrutan más cuando se comparten.</p>
-      <p>Por eso quiero invitarte a celebrar conmigo esta nueva etapa.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== DETALLES ===== -->
-<section id="detalles">
-  <h2 class="reveal">Detalles</h2>
-  <div class="detalles-grid">
-
-    <div class="detalle-card reveal d1">
-      <div class="detalle-icon-wrap">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8"  y1="2" x2="8"  y2="6"/>
-          <line x1="3"  y1="10" x2="21" y2="10"/>
-        </svg>
-      </div>
-      <h3>Sábado, 11 de Abril</h3>
-      <p class="sub">21:00 Horas a 04:00 Horas</p>
-      <a href="#" id="add-calendar-link">
-        Add to Calendar
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-          <polyline points="15 3 21 3 21 9"/>
-          <line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>
-      </a>
-    </div>
-
-    <div class="detalle-card reveal d2">
-      <div class="detalle-icon-wrap">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-      </div>
-      <h3>Salón Madagascar</h3>
-      <p class="sub">11 entre 56 y 57, La Plata</p>
-      <a href="https://maps.google.com/?q=Salón+Madagascar+11+entre+56+y+57+La+Plata"
-         target="_blank" rel="noopener">
-        View on Map
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-          <polyline points="15 3 21 3 21 9"/>
-          <line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== COUNTDOWN + FORM ===== -->
-<section id="confirmar">
-
-  <p class="countdown-label reveal">Faltan solo...</p>
-  <div class="countdown reveal d1">
-    <div class="countdown-item">
-      <span id="days">00</span>
-      <small>DÍAS</small>
-    </div>
-    <div class="countdown-item">
-      <span id="hours">00</span>
-      <small>HORAS</small>
-    </div>
-    <div class="countdown-item">
-      <span id="minutes">00</span>
-      <small>MINUTOS</small>
-    </div>
-    <div class="countdown-item">
-      <span id="seconds">00</span>
-      <small>SEGUNDOS</small>
-    </div>
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#inicio" onclick="closeMobileMenu()">Inicio</a>
+    <a href="#detalles" onclick="closeMobileMenu()">Detalles</a>
+    <a href="#confirmar" onclick="closeMobileMenu()">Confirmar</a>
+    <a href="#regalo" onclick="closeMobileMenu()">Regalito</a>
   </div>
 
-  <div class="form-card reveal d2">
-    <h3>Confirmación</h3>
-    <p class="form-sub">Confirmá tu asistencia antes del 4 de abril</p>
+  <!-- iframe oculto para submit sin recarga -->
+  <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
 
-    <!-- Paso 1: Nombre + Apellido -->
-    <div class="form-row">
-      <div class="form-group" style="margin-bottom:0">
-        <label class="form-label" for="nombre">Nombre</label>
-        <input class="form-input" id="nombre" type="text" placeholder="Tu nombre" autocomplete="given-name"/>
+  <!-- ===== HERO ===== -->
+  <section id="inicio">
+    <div class="hero-inner">
+
+      <div class="hero-logo">
+        <img src="./images/logo-mi-recibida.png" alt="Mi Graduación" />
       </div>
-      <div class="form-group" style="margin-bottom:0">
-        <label class="form-label" for="apellido">Apellido</label>
-        <input class="form-input" id="apellido" type="text" placeholder="Tu apellido" autocomplete="family-name"/>
+
+      <div class="hero-right">
+        <h1 class="hero-subtitle">Soy Ingeniera<br>en Sistemas</h1>
+        <p class="hero-desc">Quiero invitarte a celebrar conmigo este momento tan especial, después de años de
+          dedicación y esfuerzo.</p>
+        <a href="#guarda" class="btn-ver">
+          Ver invitación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </a>
       </div>
+
     </div>
+  </section>
 
-    <!-- Paso 2: ¿Asistís? -->
-    <div style="margin-bottom:6px;">
-      <span class="asisto-label">¿Asistís?</span>
-      <div class="asisto-row">
-        <button class="btn-asisto" id="btn-si" type="button" onclick="seleccionarAsistencia('si')">Sí asisto</button>
-        <button class="btn-asisto" id="btn-no" type="button" onclick="seleccionarAsistencia('no')">No puedo</button>
+  <!-- ===== GUARDA EL DÍA ===== -->
+  <section id="guarda">
+    <div class="guarda-inner">
+
+      <div class="guarda-img-wrap reveal-left">
+        <img src="./images/ilustracion-graduada.png" alt="Ilustración graduada" />
       </div>
-    </div>
 
-    <!-- Paso 3a: Restricción alimentaria (solo aparece si SI) -->
-    <div class="form-step" id="restriccion-step">
-      <div class="fs-inner">
-        <div style="height:14px"></div>
-        <div class="form-group" style="margin-bottom:10px">
-          <label class="form-label" for="restriccion">Restricción Alimentaria</label>
-          <div class="select-wrap">
-            <select class="form-select" id="restriccion" onchange="checkOtro()">
-              <option value="Sin restricciones">Sin restricciones</option>
-              <option value="Vegetariano">Vegetariano</option>
-              <option value="Vegano">Vegano</option>
-              <option value="Sin TACC">Sin TACC</option>
-              <option value="Sin lactosa">Sin lactosa</option>
-              <option value="Otro">Otro</option>
-            </select>
-          </div>
+      <div class="guarda-text reveal-right">
+        <h2>Guarda el día</h2>
+        <p>Después de años de estudio, parciales eternos, trabajos grupales intensos y muchas noches sin dormir…</p>
+        <p class="highlight">Lo logré. Me recibí de Ingeniera en Sistemas.</p>
+        <p>Fue un camino con muchos desafíos, momentos de estrés, risas y mucha constancia.</p>
+        <p>Y si algo aprendí en todo este proceso es que los logros se celebran y se disfrutan más cuando se comparten.
+        </p>
+        <p>Por eso quiero invitarte a celebrar conmigo esta nueva etapa.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== DETALLES ===== -->
+  <section id="detalles">
+    <h2 class="reveal">Detalles</h2>
+    <div class="detalles-grid">
+
+      <div class="detalle-card reveal d1">
+        <div class="detalle-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
         </div>
-        <!-- Campo libre para "Otro" -->
-        <div class="form-step" id="otro-step">
-          <div class="fs-inner">
-            <div class="form-group" style="margin-bottom:6px">
-              <label class="form-label" for="restriccion-otro">Contanos cuál</label>
-              <textarea class="form-textarea" id="restriccion-otro"
-                        placeholder="Escribí tu restricción acá…"></textarea>
+        <h3>Sábado, 11 de Abril</h3>
+        <p class="sub">De 21:00 a 04:00 hs</p>
+        <a href="#" id="add-calendar-link">
+          Agregar al calendario
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="detalle-card reveal d2">
+        <div class="detalle-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <h3>Salón Madagascar</h3>
+        <p class="sub">Calle 11 entre 56 y 57, La Plata</p>
+        <a href="https://maps.google.com/?q=Salón+Madagascar+11+entre+56+y+57+La+Plata" target="_blank" rel="noopener">
+          Ver en el mapa
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== COUNTDOWN + FORM ===== -->
+  <section id="confirmar">
+
+    <p class="countdown-label reveal">Faltan solo...</p>
+    <div class="countdown reveal d1">
+      <div class="countdown-item">
+        <span id="days">00</span>
+        <small>DÍAS</small>
+      </div>
+      <div class="countdown-item">
+        <span id="hours">00</span>
+        <small>HORAS</small>
+      </div>
+      <div class="countdown-item">
+        <span id="minutes">00</span>
+        <small>MINUTOS</small>
+      </div>
+      <div class="countdown-item">
+        <span id="seconds">00</span>
+        <small>SEGUNDOS</small>
+      </div>
+    </div>
+
+    <div class="form-card reveal d2">
+      <h3>Confirmación</h3>
+      <p class="form-sub">Confirmá tu asistencia antes del 4 de abril.</p>
+
+      <!-- Paso 1: Nombre + Apellido -->
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="nombre">Nombre</label>
+          <input class="form-input" id="nombre" type="text" placeholder="Tu nombre" autocomplete="given-name" />
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="apellido">Apellido</label>
+          <input class="form-input" id="apellido" type="text" placeholder="Tu apellido" autocomplete="family-name" />
+        </div>
+      </div>
+
+      <!-- Paso 2: ¿Asistís? -->
+      <div style="margin-bottom:6px;">
+        <span class="asisto-label">¿Asistís?</span>
+        <div class="asisto-row">
+          <button class="btn-asisto" id="btn-si" type="button" onclick="seleccionarAsistencia('si')">Sí, asisto</button>
+          <button class="btn-asisto" id="btn-no" type="button" onclick="seleccionarAsistencia('no')">No puedo</button>
+        </div>
+      </div>
+
+      <!-- Paso 3a: Restricción alimentaria (solo aparece si SI) -->
+      <div class="form-step" id="restriccion-step">
+        <div class="fs-inner">
+          <div style="height:14px"></div>
+          <div class="form-group" style="margin-bottom:10px">
+            <label class="form-label" for="restriccion">Restricción alimentaria</label>
+            <div class="select-wrap">
+              <select class="form-select" id="restriccion" onchange="checkOtro()">
+                <option value="Sin restricciones">Sin restricciones</option>
+                <option value="Vegetariano">Vegetariano</option>
+                <option value="Vegano">Vegano</option>
+                <option value="Sin TACC">Sin TACC</option>
+                <option value="Sin lactosa">Sin lactosa</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+          </div>
+          <!-- Campo libre para "Otro" -->
+          <div class="form-step" id="otro-step">
+            <div class="fs-inner">
+              <div class="form-group" style="margin-bottom:6px">
+                <label class="form-label" for="restriccion-otro">Contanos cuál</label>
+                <textarea class="form-textarea" id="restriccion-otro"
+                  placeholder="Escribí tu restricción acá…"></textarea>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Paso 3b: Mensaje si NO asiste -->
-    <div class="no-msg-wrap" id="no-msg-wrap">
-      <div><p class="no-msg"></p></div>
-    </div>
+      <!-- Paso 3b: Mensaje si NO asiste -->
+      <div class="no-msg-wrap" id="no-msg-wrap">
+        <div>
+          <p class="no-msg"></p>
+        </div>
+      </div>
 
-    <!-- Botón enviar (aparece al elegir cualquier opción) -->
-    <div class="enviar-wrap" id="enviar-wrap">
-      <div>
-        <p id="form-error"></p>
-        <button class="btn-enviar" type="button" onclick="enviarRespuesta()">Enviar Respuesta</button>
+      <!-- Botón enviar (aparece al elegir cualquier opción) -->
+      <div class="enviar-wrap" id="enviar-wrap">
+        <div>
+          <p id="form-error"></p>
+          <button class="btn-enviar" type="button" onclick="enviarRespuesta()">Enviar Respuesta</button>
+        </div>
       </div>
     </div>
-  </div>
 
-</section>
+  </section>
 
-<!-- ===== REGALO ===== -->
-<section id="regalo">
-  <div class="regalo-card reveal">
-    <h3 class="regalo-title">Tu presencia es lo más importante.</h3>
-    <p class="regalo-desc">
-      Pero si querés hacerme un regalito y no sabés qué elegir, estoy
-      juntando para mi próximo gran plan: <span class="pink-bold">Viajar</span>
-    </p>
-    <div class="alias-container" onclick="copyAlias()">
-      <span class="alias-texto">kmariescurrena.nx</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-           width="16" height="16" class="alias-copy-icon"
-           stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-      </svg>
+  <!-- ===== REGALO ===== -->
+  <section id="regalo">
+    <div class="regalo-card reveal">
+      <h3 class="regalo-title">Tu presencia es lo más importante.</h3>
+      <p class="regalo-desc">
+        Pero si querés hacerme un regalito y no sabés qué elegir, estoy
+        juntando para mi próximo gran plan: <span class="pink-bold">Viajar</span>
+      </p>
+      <div class="alias-container" onclick="copyAlias()">
+        <span class="alias-texto">kmariescurrena.nx</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+          class="alias-copy-icon" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </svg>
+      </div>
+      <p class="regalo-note">Todo aporte será destinado a crear nuevos recuerdos inolvidables.</p>
     </div>
-    <p class="regalo-note">Todo aporte será destinado a crear nuevos recuerdos inolvidables.</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <blockquote class="reveal">
+      "The future belongs to those who believe in the beauty of their dreams."
+      <cite>- Eleanor Roosevelt</cite>
+    </blockquote>
+  </footer>
+
+  <!-- Toast notificación -->
+  <div id="toast" class="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+    ¡Alias copiado!
   </div>
-</section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <blockquote class="reveal">
-    "The future belongs to those who believe in the beauty of their dreams."
-    <cite>- Eleanor Roosevelt</cite>
-  </blockquote>
-</footer>
+  <!-- Overlay de carga -->
+  <div id="loading">
+    <div class="spinner"></div>
+  </div>
 
-<!-- Toast notificación -->
-<div id="toast" class="toast">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-       width="13" height="13" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="20 6 9 17 4 12"/>
-  </svg>
-  ¡Alias copiado!
-</div>
-
-<!-- Overlay de carga -->
-<div id="loading"><div class="spinner"></div></div>
-
-<!-- ===== SCRIPTS ===== -->
-<script src="./js/countdown.js"></script>
-<script src="./js/form.js"></script>
+  <!-- ===== SCRIPTS ===== -->
+  <script src="./js/countdown.js"></script>
+  <script src="./js/form.js"></script>
 
 </body>
+
 </html>

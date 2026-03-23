@@ -224,7 +224,7 @@ section, nav, footer { position: relative; z-index: 1; }
 }
 .guarda-text p { font-size: 18px; color: var(--text-mid); margin-bottom: 12px; line-height: 1.75; }
 .guarda-text .highlight {
-  font-family: 'Noto Serif', serif; font-size: 22px;
+  font-family: 'Noto Serif', serif; font-size: 24px;
   color: var(--pink); font-style: italic; margin-bottom: 16px;
 }
 
@@ -255,11 +255,12 @@ section, nav, footer { position: relative; z-index: 1; }
 
 .detalle-icon-wrap {
   width: 38px; height: 38px; border-radius: 10px;
-  background: var(--teal-light);
+  background: #fce5e9;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 14px;
 }
-.detalle-icon-wrap svg { stroke: var(--teal); }
+
+.detalle-icon-wrap svg { stroke: var(--pink); }
 
 .detalle-card h3 {
   font-family: 'Noto Serif', serif; font-size: 22px; font-weight: 700; margin-bottom: 4px;
@@ -287,7 +288,7 @@ section, nav, footer { position: relative; z-index: 1; }
 .countdown-label {
   text-align: center;
   font-family: 'Noto Sans', sans-serif;
-  font-size: 22px; font-weight: 700; letter-spacing: 6px;
+  font-size: 24px; font-weight: 700; letter-spacing: 6px;
   color: var(--pink); text-transform: uppercase; margin-bottom: 32px;
 }
 .countdown {
@@ -513,18 +514,25 @@ section, nav, footer { position: relative; z-index: 1; }
 
 /* ---------- FOOTER ---------- */
 footer {
-  background: rgba(0,124,119,0.12); padding: 52px 20px;
-  text-align: center; border-top: 1px solid rgba(0,0,0,0.05);
+  padding: 40px 40px;
+  background-image: url('../images/fondo-verde.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0,124,119,0.10);
 }
 footer blockquote {
-  font-family: 'Noto Serif', serif; font-style: italic;
-  font-size: clamp(14px,2vw,18px); color: var(--text-mid);
+  font-family: 'Noto Serif', serif; 
+  font-style: italic;
+  font-size: clamp(14px,2vw,18px); color: var(--text);
   max-width: 600px; margin: 0 auto; line-height: 1.6;
 }
 footer cite {
-  display: block; font-style: normal;
+  display: block; 
+  font-style: normal;
   font-family: 'Noto Sans', sans-serif;
-  font-size: 13px; color: var(--text-light); margin-top: 10px;
+  font-size: 14px; color: var(--text-mid); margin-top: 10px;
+  text-align: center;
 }
 
 #hidden_iframe { display: none; }
