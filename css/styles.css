@@ -128,7 +128,7 @@ section, nav, footer { position: relative; z-index: 1; }
 .hero-logo {
   display: flex;
   flex-direction: column;
-  align-items: center;          /* centrado como en Figma */
+  align-items: center;          
   justify-content: center;
   padding: 60px 40px 60px 80px;
   animation: fromLeft 0.9s var(--ease) both;
@@ -158,7 +158,7 @@ section, nav, footer { position: relative; z-index: 1; }
   /* sin white-space: nowrap — rompe en dos líneas */
 }
 .hero-desc {
-  font-size: 16px; color: var(--text-mid);
+  font-size: 20px; color: var(--text-mid);
   max-width: 460px; line-height: 1.75;
 }
 .btn-ver {
@@ -478,7 +478,7 @@ section, nav, footer { position: relative; z-index: 1; }
   font-family: 'Noto Serif', serif;
   font-size: clamp(20px,3.5vw,27px); font-weight: 700; margin-bottom: 14px;
 }
-.regalo-desc { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 22px; }
+.regalo-desc { font-size: 20px; color: var(--text-mid); line-height: 1.75; margin-bottom: 22px; }
 .pink-bold   { color: var(--pink); font-weight: 700; }
 
 .alias-container {
